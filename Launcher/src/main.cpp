@@ -1,34 +1,20 @@
-#include <Windows.h>
-#include "VmDetect.hpp"
-
-void StartCamera();
+#include "Application.h"
 
 int main(void) try
 {
-	StartCamera();
-	return 0;
+	auto app = new Application();
+	int ret = app->Run();
+	delete app;
+
+	return ret;
 }
 catch (VmDetect::VmException& vme)
 {
-	MessageBox(NULL, vme.what(), TEXT("VMDETECT EXCEPTION!"), MB_OK | MB_ICONERROR);
+	MessageBox(NULL, vme.what(), "VMDETECT EXCEPTION!", MB_ICONERROR | MB_OK);
 	return 1;
 }
-
-void StartCamera()
+catch (DemoException& de)
 {
-	STARTUPINFO si = { 0 };
-	PROCESS_INFORMATION pi = { 0 };
-	int res = CreateProcess("", nullptr, nullptr, nullptr, FALSE, NORMAL_PRIORITY_CLASS, nullptr, nullptr, &si, &pi);
-
-	if (res == 0);
-	{
-#ifdef _DEBUG
-		printf("GetLastError returned %d", GetLastError());
-		MessageBox(NULL, TEXT("CreateProcess failed"), TEXT("VMDETECT EXCEPTION!"), MB_OK | MB_ICONERROR);
-#endif
-		throw VmDetect::VmException("Cannot start camera module");
-	}
-
-	CloseHandle(&pi);
-	CloseHandle(&si);
+	MessageBox(NULL, de.what(), "DEMOAPPEXCEPTION!", MB_ICONERROR | MB_OK);
+	return 1;
 }
