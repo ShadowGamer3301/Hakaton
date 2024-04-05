@@ -21,3 +21,6 @@ mycursor.execute(req)
 myresult = mycursor.fetchall()
 
 print(myresult[0])
+file = open("Face_Recognition/photo.txt", "w")
+file.write(myresult[0])
+file.close()
