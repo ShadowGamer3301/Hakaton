@@ -22,7 +22,6 @@ body {
   align-items: center;
   position: fixed;
   padding: 10px;
-  /* background: linear-gradient(#0a2342, #86198f); */
   background: #6d28d9;
 }
 
@@ -115,7 +114,6 @@ a.nav-item:hover {
 .content-container {
   width: 60%;
   margin: 0 auto;
-  /* height: 100vh; */
   color: #f7fff7;
 }
 
@@ -139,7 +137,7 @@ a.nav-item:hover {
 .content-container .important-section .important-section-content h2,
 .content-container .application-section .application-section-content h2 {
   font-size: 44px;
-  
+
   margin-bottom: 20px;
   margin-left: 5%;
   margin-right: 5%;
@@ -152,7 +150,6 @@ a.nav-item:hover {
 
 .content-container .important-section .important-section-img,
 .content-container .application-section .application-section-img {
-  /* width: 400px; */
   height: 100%;
 }
 
@@ -195,7 +192,6 @@ a.nav-item:hover {
   height: 250px;
   border-radius: 150px;
   border: 2px solid #f7fff7;
-  /* margin-top: 40px; */
   margin-top: -75px;
 }
 
@@ -366,20 +362,19 @@ a.nav-item:hover {
   }
 }
 
-
 @media (max-width: 630px) {
-    .navbar {
-      height: 70px;
-    }
-  
-    .hero-content h1 {
-      font-size: 30px;
-    }
-  
-    .btn {
-      font-size: 1rem;
-    }
-    .content-container .application-section {
-      margin-bottom: 350px;
-    }
+  .navbar {
+    height: 70px;
+  }
+
+  .hero-content h1 {
+    font-size: 30px;
+  }
+
+  .btn {
+    font-size: 1rem;
+  }
+  .content-container .application-section {
+    margin-bottom: 350px;
+  }
 }
