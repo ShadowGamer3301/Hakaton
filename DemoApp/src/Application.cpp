@@ -13,6 +13,16 @@ Application::Application()
 #ifndef _DEBUG
 	isVM |= IsDebuggerPresent();
 #endif	
+
+	if (isVM == 0)
+	{
+		pWnd = new Window(1280, 720, "DemoApplication");
+		pGfx = new Graphics(pWnd);
+	}
+	else
+	{
+		throw DemoException("This software doesn't support you current hardware config");
+	}
 }
 
 Application::~Application()
@@ -21,17 +31,13 @@ Application::~Application()
 
 int Application::Run()
 {
-	if (isVM == 0)
+	while (true)
 	{
-		Window wnd(1280, 720, "DemoApplication");
-		while (true)
-		{
-			if (auto ec = Window::ProcessMessage())
-				return *ec;
-		}
+		if (auto ec = Window::ProcessMessage())
+			return *ec;
+		pGfx->StartDraw();
+		pGfx->DrawInterface();
+		pGfx->EndDraw();
 	}
-	else
-	{
-		throw DemoException("This software doesn't support you current hardware config");
-	}
+	
 }

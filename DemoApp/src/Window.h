@@ -2,9 +2,12 @@
 #include "VmDetect.hpp"
 #include "DemoExcept.h"
 #include <optional>
+#include "imgui.h"
+#include "imgui_impl_win32.h"
 
 class Window
 {
+	friend class Graphics;
 private:
 	class WindowClass
 	{
@@ -28,6 +31,7 @@ public:
 
 private:
 	HWND hWnd;
+	UINT width, height;
 
 	static LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp);
 };

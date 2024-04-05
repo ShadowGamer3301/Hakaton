@@ -15,6 +15,6 @@ catch (VmDetect::VmException& vme)
 }
 catch (DemoException& de)
 {
-	MessageBox(NULL, de.what(), "VMDETECT EXCEPTION!", MB_ICONERROR | MB_OK);
+	MessageBox(NULL, de.what(), "DEMOAPPEXCEPTION!", MB_ICONERROR | MB_OK);
 	return 1;
 }

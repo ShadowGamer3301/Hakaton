@@ -9,9 +9,11 @@ set(CMAKE_C_STANDARD_REQUIRED TRUE)
 #Utwórz projetk
 project(VmDetect VERSION 1.0)
 project(DemoApp VERSION 1.0)
+project(Launcher VERSION 1.0)
 
 add_subdirectory(VmDetect)
 add_subdirectory(DemoApp)
+add_subdirectory(Launcher)
 
 #Ustaw foldery wyjœciowe
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)

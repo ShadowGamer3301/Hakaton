@@ -30,6 +30,7 @@ Window::WindowClass::~WindowClass() noexcept
 }
 
 Window::Window(UINT width, UINT height, const char* title)
+	: width(width), height(height)
 {
 	hWnd = CreateWindow(WindowClass::GetName(), title, WS_OVERLAPPEDWINDOW, 0, 0, width, height, nullptr, nullptr, WindowClass::GetInstance(), nullptr);
 	if (hWnd == NULL)
@@ -41,6 +42,12 @@ Window::Window(UINT width, UINT height, const char* title)
 	}
 
 	ShowWindow(hWnd, SW_SHOWDEFAULT);
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ImGui::GetIO();
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; //Umo¿liw sterowanie klawiatur¹
+
+	ImGui_ImplWin32_Init(hWnd);
 }
 
 Window::~Window()
@@ -66,6 +73,9 @@ std::optional<int> Window::ProcessMessage()
 
 LRESULT Window::WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 {
+	extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+	if (ImGui_ImplWin32_WndProcHandler(hWnd, msg, wp, lp))
+		return true;
 
 	switch (msg)
 	{
@@ -74,7 +84,6 @@ LRESULT Window::WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp)
 		return 0;
 
 	case WM_KEYDOWN:
-		printf("Key %d was pressed!\n", wp);
 		return 0;
 
 	default:
