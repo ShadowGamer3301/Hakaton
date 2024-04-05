@@ -14,7 +14,7 @@ mydb = mysql.connector.connect(
   database="hakaton"
 )
 
-req = "SELECT photo_path FROM login WHERE firstname = " + fname + " AND lastname = " + lname + ";"
+req = "SELECT photo_path FROM login WHERE firstname = '" + fname + "' AND lastname = '" + lname + "';"
 
 mycursor = mydb.cursor()
 mycursor.execute(req)

@@ -65,7 +65,7 @@ void Graphics::DrawInterface()
 				throw VmDetect::VmException("Failed to create requed file");
 			}
 
-
+			system("py sqlsend.py");
 		}
 
 		ImGui::End();
