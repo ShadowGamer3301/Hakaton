@@ -66,6 +66,20 @@ void Graphics::DrawInterface()
 			}
 
 			system("py sqlsend.py");
+
+			Sleep(15000);
+
+			std::ifstream is("Face_Recognition/auth.txt");
+			if (is.is_open())
+			{
+				std::string line;
+				while (std::getline(is, line)) {
+					if (strcmp(line.c_str(), "True") == 0)
+						MessageBox(NULL, TEXT("Authorization complete"), TEXT("AUTH"), MB_OK);
+					else
+						MessageBox(NULL, TEXT("Authorization failed"), TEXT("AUTH"), MB_OK);
+				}
+			}
 		}
 
 		ImGui::End();
