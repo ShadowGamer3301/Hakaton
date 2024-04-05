@@ -44,7 +44,7 @@ def verify_user(): #Weryfkiacja użytkownika po jego twarzy
         result, frame = caputred_video.read()
         if is_face_matching:
             print("Dostęp przyznany")
-            write_file("confirmation.txt", {"CORRECT_USER": "True"})
+            write_file("confirmation.txt", "True")
             try:
                 os.remove("Face_Recognition/TempPhoto/TempPhoto.jpg")
             except:
@@ -76,7 +76,7 @@ def verify_user(): #Weryfkiacja użytkownika po jego twarzy
 
         time.sleep(0.2)
         if Counter_Variable >= 15:
-            write_file("confirmation.txt", {"CORRECT_USER": "False"})
+            write_file("confirmation.txt", "False")
             break
 
         Counter_Variable +=1
